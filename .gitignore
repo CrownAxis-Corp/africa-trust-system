@@ -1,0 +1,19 @@
+
+# Virtual Environment
+dc_venv/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Django
+*.sqlite3
+local_settings.py
+
+# Environment variables
+.env
+
+# OS
+.DS_Store
+Thumbs.db
