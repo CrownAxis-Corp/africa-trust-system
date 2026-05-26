@@ -17,3 +17,6 @@ local_settings.py
 # OS
 .DS_Store
 Thumbs.db
+
+# Vs code
+.vscode
