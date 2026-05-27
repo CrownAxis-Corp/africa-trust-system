@@ -5,9 +5,9 @@ from django.conf import settings
 class Contract(models.Model):
     """Contract fields for Africa Trust System"""
     STATUS_CHOICES = [('PENDING','Pending'),
-               ('ACTIVE', 'Active'),
-               ('COMPLETED','Completed'),
-               ]
+            ('ACTIVE', 'Active'),
+            ('COMPLETED','Completed'),
+            ]
     client = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="client_contracts", on_delete=models.CASCADE)
     contractor = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="contractor_contracts", on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
