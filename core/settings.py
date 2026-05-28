@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'payments',
     'trust',
     'disputes',
+    'rest_framework'
 ]
 AUTH_USER_MODEL='users.User'
 
