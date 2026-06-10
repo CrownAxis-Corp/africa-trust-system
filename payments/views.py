@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from .serializer import PaymentSerializer
+from .serializers import PaymentSerializer
 from .models import Payment
 
 # Create your views here.
