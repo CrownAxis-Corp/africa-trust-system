@@ -7,5 +7,6 @@ urlpatterns = [
     path('', include('payments.urls')),
     path('', include('trust.urls')),
     path('', include('disputes.urls')),
-    path('', include('users.urls'))
+    path('', include('users.urls')),
+    
 ]
