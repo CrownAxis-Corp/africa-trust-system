@@ -30,3 +30,17 @@ class LoginView(APIView):
 
         token, created = Token.objects.get_or_create(user=user)
         return Response({'token': token.key})
+    
+
+class RegisterView(APIView):
+    authentication_classes = []
+    permission_classes = [AllowAny]
+    def post(self, request):
+        username = request.data.get('username')
+        password = request.data.get('password')
+
+        if username, password is None:
+            return Response({'error': 'Invalid Credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+
+        token, created = Token.objects.get_or_create(user=user)
+        return Response({'token': token.key})
