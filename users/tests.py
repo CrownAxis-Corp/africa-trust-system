@@ -8,9 +8,25 @@ User=get_user_model()
 
 
 class UsersTest(APITestCase):
+    
     def setUp(self):
         self.user = User.objects.create_user(username='testuser', password='testpass123')
         self.client.force_authenticate(user=self.user)
+
+    def test_register_returns_201(self):
+        url = reverse('register')
+        response=self.client.post(url, data={'username':'test01', 'password':'testpass123'})
+        self.assertEqual(response.status_code, 201)
+
+    def test_register_missing_fields_returns_400(self):
+        url = reverse('register')
+        response = self.client.post(url)
+        self.assertEqual(response.status_code, 400)
+
+    def test_register_duplicate_username_returns_400(self):
+        url = reverse('register')
+        response = self.client.post(url, data ={'username':'testuser', 'password': 'testpass123'})
+        self.assertEqual(response.status_code, 400)
         
     def test_user_list_returns_200(self):
         url = reverse('user-list')
