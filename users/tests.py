@@ -13,9 +13,19 @@ class UsersTest(APITestCase):
         self.user = User.objects.create_user(username='testuser', password='testpass123')
         self.client.force_authenticate(user=self.user)
 
+    def test_login_returns_200(self):
+        url = reverse('login')
+        response = self.client.post(url, data={'username':'testuser' ,'password':'testpass123'})
+        self.assertIn('refresh', response.data)
+        self.assertIn('access', response.data)
+        self.assertEqual(response.status_code, 200)
+
+
     def test_register_returns_201(self):
         url = reverse('register')
         response=self.client.post(url, data={'username':'test01', 'password':'testpass123'})
+        self.assertIn('access', response.data)
+        self.assertIn('refresh', response.data)
         self.assertEqual(response.status_code, 201)
 
     def test_register_missing_fields_returns_400(self):
